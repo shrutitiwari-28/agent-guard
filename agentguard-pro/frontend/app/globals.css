@@ -1,0 +1,13 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+body { @apply bg-bg font-sans text-ink antialiased; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid #2c2a63; outline-offset: 2px; }
+/* the "pipe": the agent's context. clear until it reads untrusted content, then stained ink. */
+.step { opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.step.in { opacity: 1; transform: none; }
+.pipe { height: 14px; position: relative; overflow: hidden; background: #c4d0d3; }
+.pipe::after { content: ""; position: absolute; inset: 0; width: 0; background: #a9dad5; transition: width .8s cubic-bezier(.3,.7,.2,1); }
+.pipe.ink::after { background: #2c2a63; }
+.step.in .pipe::after { width: 100%; }
+.thin::-webkit-scrollbar { height: 8px; } .thin::-webkit-scrollbar-thumb { background: #c4d0d3; border-radius: 4px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
